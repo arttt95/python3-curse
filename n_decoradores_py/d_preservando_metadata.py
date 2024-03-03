@@ -9,7 +9,7 @@ wraps -> São funções que envolvem elementos com diversas finalidades.
 
 def ver_log(funcao):
     def logar(*args, **kwargs):
-        # Eu sou uma função (logar) dentro de outra
+        '''Eu sou uma função (logar) dentro de outra'''
         print(f'Você está chamando {funcao.__name__}')
         print(f'Aqui a documentação: {funcao.__doc__}')
         return funcao(*args, **kwargs)
@@ -17,7 +17,7 @@ def ver_log(funcao):
 
 @ver_log
 def soma(a, b):
-    # Soma dois números.
+    '''Soma dois números.'''
     return a + b
 
 # print(soma(10, 30))

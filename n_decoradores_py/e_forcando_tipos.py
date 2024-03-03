@@ -4,11 +4,11 @@ Forçando tipos de dados com decoradores
 
 """
 
-def forca_tipo(*tipos):
+def forca_tipo(*args1):
     def decorador(funcao):
-        def converte(*args, **kwargs):
+        def converte(*args2, **kwargs):
             novo_args = []
-            for(valor, tipo) in zip(args, tipos):
+            for(valor, tipo) in zip(args2, args1):
                 novo_args.append(tipo(valor))  # str('Geek'), int('3')
             return funcao(*novo_args, **kwargs)
         return converte

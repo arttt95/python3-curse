@@ -90,5 +90,3 @@ rindo = faz_me_rir('Fernanda')
 print(rindo())
 print(rindo())
 print(rindo())
-
-

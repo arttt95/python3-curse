@@ -12,7 +12,7 @@ iter([1, 2, 3, 4, 5])
 iter('Geek University')
 """
 
-def meu_for(iteravel):
+def meu_loop_for(iteravel):
     it = iter(iteravel)
     while True:
         try:
@@ -20,8 +20,6 @@ def meu_for(iteravel):
         except StopIteration:
             break
 
-meu_for('Geek University')
+meu_loop_for('Tinky-Winky!\n')
 
-numeros = [1, 2, 3, 4, 5]
-
-meu_for(numeros)
+meu_loop_for([1, 2, 3, 4, 5, 6])

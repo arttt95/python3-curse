@@ -30,14 +30,14 @@ import time
 # Gerator Expression
 
 gen_inicio = time.time()
-print(sum(num for num in range(100000000)))  # 1 bilhões
+print(sum(num for num in range(100_000_000)))  # 100 milhões
 gen_tempo = time.time() - gen_inicio
 
 # List Comprehension
 
 list_inicio = time.time()
-print(sum([num for num in range(100000000)]))  # 1 bilhões
+print(sum([num for num in range(100_000_000)]))  # 100 milhões
 list_tempo = time.time() - list_inicio
 
-print(f'Generator Expression levou {gen_tempo}')
-print(f'List Comprehension levou {list_tempo}')
+print(f"Generator Expression levou {round(gen_tempo, 2)}'s")
+print(f"List Comprehension levou {round(list_tempo, 2)}'s")

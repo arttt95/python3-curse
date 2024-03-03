@@ -111,6 +111,10 @@ os.removedirs('geek/mais')
 # Importando a biblioteca send2trash (Envia arquivos e diretórios para a lixeira
 from send2trash import send2trash
 
+# Se aparecer o erro no command "lsb_release":
+
+sudo apt-get install lsb-core
+
 os.remove('cesta1.txt')  # Não vai para a lixeira. É deletado imediatamente.
 
 send2trash('cesta2.txt')  # Vai para a lixeira. Pode ser restaurado.

@@ -5,6 +5,7 @@ Atributos -> Representam as características de um objeto. Ou seja, pelos atribu
 conseguimos representar computacionalmente os estados de um objeto.
 
 Em Pytrhon, dividimos os atributos em 3 grupos:
+
     - Atributos de Instância;
     - Atributos de Classe;
     - Atributos Dinâmicos;
@@ -13,7 +14,7 @@ Em Pytrhon, dividimos os atributos em 3 grupos:
 
 # OBS: Método contrutor: É um método especial utilizado para a contrução do objeto.
 
-# Em Java, uma classe Lãmpada, incluindo deus atributos ficaria mais ou menos:
+# Em Java, uma classe Lâmpada, incluindo deus atributos ficaria mais ou menos:
 
 public class Lampada(){
     private int voltagem;
@@ -32,7 +33,7 @@ Caso queiramos demonstrar que determinado atributo deve ser tratado como privado
 que deve ser acessado/utilizado somente dentro da própria classe onde está declarado,
 utiliza-se __ duplo underscore no início de seu nome.
 
-Isso é conhceido também como Name Mangling.
+Isso é conhceido também como ***Name Mangling***.
 
 # OBS: Lembre-se que isso é apenas uma convenção, ou seja, a linguagem Python não
 # vai impedir que façamos acesso aos atributos sinalizados como privados fora da classe.
@@ -87,12 +88,15 @@ print(p2.id)
 """
 
 # Classes com atributos de intância públicos
+
+
 class Lampada:
 
     def __init__(self, voltagem, cor):
         self.voltagem = voltagem
         self.cor = cor
         self.ligada = False
+
 
 class ContaCorrente:
 
@@ -101,12 +105,14 @@ class ContaCorrente:
         self.limite = limite
         self.saldo = saldo
 
+
 class Produto:
 
     def __init__(self, nome, descricao, valor):
         self.nome = nome
         self.descricao = descricao
         self.valor = valor
+
 
 class Usuario:
 
@@ -115,7 +121,9 @@ class Usuario:
         self.email = email
         self.senha = senha
 
+
 # Atributos Públicos e Atributos Privados
+
 
 class Acesso:
 
@@ -130,10 +138,10 @@ class Acesso:
         print(self.email)
 
 
-
 # Refatorar a classe Produto
 
-class Produto:
+
+class ProdutoNovo:
 
     # Atributo de classe
     imposto = 1.05  # 0.05% de imposto
@@ -143,8 +151,9 @@ class Produto:
         self.id = Produto.contador + 1
         self.nome = nome
         self.descricao = descricao
-        self.valor = (valor * Produto.imposto)
+        self.valor = (valor * ProdutoNovo.imposto)
         Produto.contador = self.id
+
 
 # Atributos Dinâmicos -> Um atributo de instância que pode ser criado em tempo de execução.
 
@@ -152,7 +161,7 @@ class Produto:
 
 p1 = Produto('PlayStation4', ' Video game', 2300)
 
-p2 = Produto('Arroz', 'Mercearia', 5.99)
+p2 = Produto('Arroz', 'Alimento', 5.99)
 
 # Criando um atributo dinâmico em tempo de execução
 

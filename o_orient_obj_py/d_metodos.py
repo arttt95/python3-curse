@@ -1,3 +1,5 @@
+from passlib.hash import pbkdf2_sha256 as cryp
+
 """
 POO - Métodos
 
@@ -39,7 +41,74 @@ print(user2.nome_completo())
 print(f'Senha User 1: {user1._Usuario__senha}')  # Acesso de forma errada de um atributo de classe
 
 print(f'Senha User 2: {user2._Usuario__senha}')  # Acesso de forma errada de um atributo de classe
+
+nome = input('Informe o nome: ')
+sobrenome = input('Informe o sobrenome: ')
+email = input('Informe o e-mail: ')
+senha = input('Informe a senha: ')
+confirma_senha = input('Confirme a senha: ')
+
+if senha == confirma_senha:
+    user = Usuario(nome, sobrenome, email, senha)
+else:
+    print('Senha não confere...')
+    exit(69)
+
+print('Usuário criado com sucesso!')
+
+senha = input('Informe a senha para acesso: ')
+
+if user.checa_senha(senha):
+    print('Acesso permitido')
+else:
+    print('Acesso negado')
+
+print(f'Senha User Criptograda: {user._Usuario__senha}')  # Acesso errado
+
+# Métodos de Classe em Python são conhecdos como Métodos Estáticos em outras linguagens.
+
+# Métodos de Classe (class)
+
+user1 = Usuario('Tinky', 'Winky', 'teletubs2000@gmail.com', '342516')
+user2 = Usuario('Itachi', 'Uchiha', 'akatsuki.vrau@gmail.com', '162534')
+user3 = Usuario('Cris', 'Ronaldo', 'falamaneh@gmail.com', '777777')
+
+print(user1._Usuario__senha)
+print(user2._Usuario__senha)
+print(user3._Usuario__senha)
+print(Usuario.conta_usarios())
+
+Usuario.ver()
+
+contador = 0
+
+    @classmethod
+    def conta_usarios(cls):
+        return f'Temos {cls.contador} usuário(s).'
+
+    @classmethod
+    def ver(cls):
+        print('Teste')
+
+    def __init__(self, nome, sobrenome, email, senha):
+        self.id = Usuario.contador + 1
+        self.__nome = nome
+        self.__sobrenome = sobrenome
+        self.__email = email
+        self.__senha = cryp.hash(senha, rounds=200_000, salt_size=16)
+        Usuario.contador = self.id
+        
+# Métodos Privados
+
+user = Usuario('Tinly', 'Winky', 'teletubs@gmail.com', '324453')
+
+print(user._Usuario__gera_usuario())
+
+    ***
+    def __gera_usuario(self):
+        return self.__email.split('@')[0]
 """
+
 
 class Lampada:
 
@@ -49,13 +118,16 @@ class Lampada:
         self.__luminosidade = luminosidade
         self.__ligada = False
 
+
 class ContaCorrente:
 
     contador = 4999
+
     def __init__(self, numero, limite, saldo):
         self.__numero = ContaCorrente.contador + 1
         self.__limite = limite
         self.__saldo = saldo
+
 
 class Produto:
 
@@ -71,15 +143,31 @@ class Produto:
         """Retorna o valor do produto com o desconto"""
         return (self.__valor * (100 - porcentagem)) / 100
 
-from passlib.hash import pbkdf2_sha256 as cryp
 
 class Usuario:
 
+    contador = 0
+
+    @classmethod
+    def conta_usarios(cls):
+        return f'Temos {cls.contador} usuário(s).'
+
+    @classmethod
+    def ver(cls):
+        print('Teste')
+
+    @staticmethod
+    def definicao():
+        return 'UXR344'
+
     def __init__(self, nome, sobrenome, email, senha):
+        self.__id = Usuario.contador + 1
         self.__nome = nome
         self.__sobrenome = sobrenome
         self.__email = email
-        self.__senha = cryp.hash(senha, roounds=20000000, salt_size=16)
+        self.__senha = cryp.hash(senha, rounds=200_000, salt_size=16)
+        Usuario.contador = self.__id
+        print(f'Usuário criado: {self.__gera_usuario()}')
 
     def nome_completo(self):
         return f'{self.__nome} {self.__sobrenome}'
@@ -89,25 +177,18 @@ class Usuario:
             return True
         return False
 
-nome = input('Informe o nome: ')
-sobrenome = input('Informe o sobrenome: ')
-email = input('Informe o e-mail: ')
-senha = input('Informe a senha: ')
-confirma_senha = input('Confirme a senha: ')
+    def __gera_usuario(self):
+        return self.__email.split('@')[0]
 
-if senha == confirma_senha:
-    user = Usuario(nome, sobrenome, email, senha)
-else:
-    print('Senha não confere...')
-    exit(1)
 
-print('Usuário criado com sucesso!')
+# Métodos Estáticos
 
-senha = input('Informe a senha para acesso: ')
+print(Usuario.contador)
 
-if user.checa_senha(senha):
-    print('Acesso permitido')
-else:
-    print('Acesso negado')
+print(Usuario.definicao())
 
-print(f'Senha User Criptograda: {user._Usuario__senha}')  # Acesso errado
+user1 = Usuario('Goku', 'Saiyajin', 'kamehame@gmail.com', '123456')
+
+print(user1.contador)
+
+print(user1.definicao())

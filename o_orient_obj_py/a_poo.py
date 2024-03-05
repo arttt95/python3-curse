@@ -13,3 +13,20 @@ Principais elementos da Orientação a Objetos
 - Construtor -> Método especial utilizado para criar os objetos;
 - Objeto -> Instância da classe.
 """
+
+numero = 10
+print(numero)
+print(type(numero))
+
+nome = 'Tinky-Winky'
+print(nome)
+print(type(nome))
+
+
+class Produto:
+    pass
+
+
+ps5 = Produto()
+print(ps5)
+print(type(ps5))

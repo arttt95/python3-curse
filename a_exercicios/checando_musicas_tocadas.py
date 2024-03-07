@@ -6,8 +6,8 @@ musicas = [
     {'Música': 'Passinho do Romano', 'Tocou': 200},
 ]
 
-mais_tocada = max(musicas, key=lambda n: n['Tocou'])
-menos_tocada = min(musicas, key=lambda n: n['Tocou'])
+mais_tocada = max(musicas, key=lambda x: x['Tocou'])
+menos_tocada = min(musicas, key=lambda x: x['Tocou'])
 
 
 print(mais_tocada['Música'],
@@ -17,24 +17,24 @@ print(menos_tocada['Música'],
       ',tocou:',
       menos_tocada['Tocou'])
 
-max = 0
+valor_max = 0
 
 for n in musicas:
-    if n['Tocou'] > max:
-        max = n['Tocou']
+    if n['Tocou'] > valor_max:
+        valor_max = n['Tocou']
 
 for n in musicas:
     if n['Tocou'] == max:
         print(n['Música'])
         print(n['Tocou'])
 
-min = 1_000_000_000_000_000
+valor_min = 1_000_000_000_000_000
 
 for n in musicas:
-    if n['Tocou'] < min:
-        min = n['Tocou']
+    if n['Tocou'] < valor_min:
+        valor_min = n['Tocou']
 
 for n in musicas:
-    if n['Tocou'] == min:
+    if n['Tocou'] == valor_min:
         print(n['Música'])
         print(n['Tocou'])

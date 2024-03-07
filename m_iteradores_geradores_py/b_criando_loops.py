@@ -12,6 +12,7 @@ iter([1, 2, 3, 4, 5])
 iter('Geek University')
 """
 
+
 def meu_loop_for(iteravel):
     it = iter(iteravel)
     while True:
@@ -19,6 +20,7 @@ def meu_loop_for(iteravel):
             print(next(it))
         except StopIteration:
             break
+
 
 meu_loop_for('Tinky-Winky!\n')
 
